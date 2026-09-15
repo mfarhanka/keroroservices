@@ -1,10 +1,32 @@
+<?php require_once __DIR__ . '/lib/seo.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Kaundar Enterprise provides waste, sewerage, liquid disposal, recycling, transport, tree cutting and debris clearing services across Kuala Lumpur and Selangor.">
-    <title><?= htmlspecialchars($pageTitle ?? 'Kaundar Enterprise', ENT_QUOTES, 'UTF-8') ?></title>
+    <meta name="description" content="<?= htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8') ?>">
+    <title><?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?></title>
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Kaundar Enterprise">
+    <meta property="og:locale" content="en_MY">
+    <meta property="og:title" content="<?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:card" content="<?= $seoSiteUrl !== '' ? 'summary_large_image' : 'summary' ?>">
+    <meta name="twitter:title" content="<?= htmlspecialchars($seoTitle, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:description" content="<?= htmlspecialchars($seoDescription, ENT_QUOTES, 'UTF-8') ?>">
+    <?php if ($seoSiteUrl !== ''): ?>
+    <link rel="canonical" href="<?= htmlspecialchars($seoSiteUrl . '/', ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:url" content="<?= htmlspecialchars($seoSiteUrl . '/', ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:image" content="<?= htmlspecialchars($seoSiteUrl . $seoImagePath, ENT_QUOTES, 'UTF-8') ?>">
+    <meta property="og:image:alt" content="Kaundar Enterprise waste service truck at a project site">
+    <meta name="twitter:image" content="<?= htmlspecialchars($seoSiteUrl . $seoImagePath, ENT_QUOTES, 'UTF-8') ?>">
+    <meta name="twitter:image:alt" content="Kaundar Enterprise waste service truck at a project site">
+    <?php endif; ?>
+    <script type="application/ld+json"><?= json_encode($seoBusiness, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?></script>
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/brand/favicon.png">
+    <link rel="icon" type="image/x-icon" href="assets/images/brand/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/brand/apple-touch-icon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +56,7 @@
     <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
             <a href="#home" aria-label="Kaundar Enterprise home" class="flex min-w-0 items-center gap-3 sm:gap-4">
-                <div class="flex h-14 w-14 shrink-0 items-center justify-center bg-keBlue font-display text-xl font-extrabold text-white shadow-sm [clip-path:polygon(0_0,100%_0,100%_82%,50%_100%,0_82%)] sm:h-[68px] sm:w-[72px] sm:text-2xl">
-                    <span class="text-keRed">K</span>E
-                </div>
+                <img src="assets/images/brand/ke-logo.png" width="512" height="512" alt="Kaundar Enterprise KE logo" class="h-14 w-14 shrink-0 object-contain sm:h-[68px] sm:w-[68px]">
                 <div class="min-w-0">
                     <div class="whitespace-nowrap font-display text-lg font-extrabold tracking-wide text-keBlue sm:text-[30px] sm:leading-none">KAUNDAR ENTERPRISE</div>
                     <div class="mt-1 whitespace-nowrap text-[8px] font-bold tracking-[.25em] text-slate-500 sm:mt-2 sm:text-[11px] sm:tracking-[.32em]">WASTE &amp; RORO SERVICES</div>

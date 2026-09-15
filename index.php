@@ -1,6 +1,8 @@
 <?php
-$pageTitle = 'Kaundar Enterprise | Waste & Environmental Services';
+$pageTitle = 'RORO Bin & Waste Services in KL & Selangor | Kaundar Enterprise';
+require_once __DIR__ . '/lib/packages.php';
 require __DIR__ . '/header.php';
+$packages = array_values(array_filter(loadPackages(), fn ($package) => !empty($package['active'])));
 $services = [
     ['fa-trash-can','Waste Management','Reliable collection and responsible disposal for commercial, construction and residential needs.'],
     ['fa-droplet','Domestic Disposal','Safe and proper disposal of everyday household waste, including food scraps, plastic and paper.'],
@@ -51,7 +53,7 @@ $jobExperience = [
                     Clearing the way for <span class="text-red-400">better work.</span>
                 </h1>
                 <p class="mt-7 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-                    Professional waste, environmental and transport services backed by more than three decades of field experience.
+                    RORO bin, waste collection, environmental and transport services across Kuala Lumpur and Selangor, backed by more than three decades of field experience.
                 </p>
                 <div class="mt-9 flex flex-wrap gap-3">
                     <a href="#contact" class="bg-keRed px-6 py-3.5 font-bold text-white hover:bg-red-700">Request a quotation <i class="fa-solid fa-arrow-right ml-2"></i></a>
@@ -148,21 +150,21 @@ $jobExperience = [
                 </div>
             </figure>
             <div class="mt-12 grid gap-px overflow-hidden border border-white/20 bg-white/20 lg:grid-cols-[1fr_1fr_1fr_1.65fr]">
-                <?php foreach ([
-                    ['12 x 6 x 2&frac12;', 'assets/images/package-12x6x2-5.png?v=2'],
-                    ['12 x 6 x 4', 'assets/images/package-12x6x4.png?v=2'],
-                    ['12 x 6 x 5', 'assets/images/package-12x6x5.png'],
-                ] as $i => [$binSize, $binPhoto]): ?>
+                <?php foreach ($packages as $i => $package):
+                    $binSize = (string) ($package['size'] ?? '');
+                    $binPhoto = (string) ($package['image'] ?? '');
+                    $price = (string) ($package['price'] ?? 'Negotiable');
+                ?>
                     <article class="group relative overflow-hidden bg-keBlue transition hover:bg-blue-800">
                         <div class="relative h-40 overflow-hidden">
                             <img src="<?= htmlspecialchars($binPhoto) ?>" alt="Blue Kaundar Enterprise RORO bin - <?= strip_tags($binSize) ?> cubic yard package" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
                             <span class="absolute right-4 top-4 bg-ink/80 px-3 py-2 font-display text-sm font-bold text-white"><?= str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
                         </div>
                         <div class="p-7">
-                            <h3 class="font-display text-3xl font-extrabold uppercase"><?= $binSize ?></h3>
+                            <h3 class="font-display text-3xl font-extrabold uppercase"><?= htmlspecialchars($binSize) ?></h3>
                             <p class="mt-1 text-xs font-bold uppercase tracking-[.18em] text-blue-200">Cubic Yard Bin</p>
-                            <div class="mt-7 border-t border-white/20 pt-4 text-sm font-bold text-white">Price <span class="float-right text-red-300">Negotiable</span></div>
-                            <a href="https://wa.me/60162835680?text=<?= rawurlencode('Hello Kaundar Enterprise, I would like to enquire about the ' . html_entity_decode($binSize) . ' cubic yard RORO bin package.') ?>" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center bg-green-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-700">
+                            <div class="mt-7 border-t border-white/20 pt-4 text-sm font-bold text-white">Price <span class="float-right text-red-300"><?= htmlspecialchars($price) ?></span></div>
+                            <a href="https://wa.me/60162835680?text=<?= rawurlencode('Hello Kaundar Enterprise, I would like to enquire about the ' . $binSize . ' cubic yard RORO bin package.') ?>" target="_blank" rel="noopener" class="mt-5 flex items-center justify-center bg-green-600 px-4 py-3 text-sm font-bold text-white transition hover:bg-green-700">
                                 <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>Enquire on WhatsApp
                             </a>
                         </div>

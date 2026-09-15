@@ -1,0 +1,37 @@
+[
+    {
+        "id": "pkg-12x6x2-5",
+        "size": "12 x 6 x 2½",
+        "image": "assets/images/packages/37c449a4ccee9788.png",
+        "price": "Negotiable",
+        "active": true
+    },
+    {
+        "id": "pkg-12x6x4",
+        "size": "12 x 6 x 4",
+        "image": "assets/images/package-12x6x4.png?v=2",
+        "price": "Negotiable",
+        "active": true
+    },
+    {
+        "id": "pkg-12x6x5",
+        "size": "12 x 6 x 5",
+        "image": "assets/images/package-12x6x5.png",
+        "price": "Negotiable",
+        "active": true
+    },
+    {
+        "id": "pkg-3215c8fd4f80",
+        "size": "Gin",
+        "image": "",
+        "price": "Negotiable",
+        "active": true
+    },
+    {
+        "id": "pkg-1fbbc730b1fe",
+        "size": "farhana",
+        "image": "",
+        "price": "Negotiable",
+        "active": true
+    }
+]
