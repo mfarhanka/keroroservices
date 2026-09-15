@@ -1,3 +1,7 @@
+<IfModule mod_env.c>
+  SetEnv KAUNDAR_SITE_URL https://keroroservices.com.my
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteRule ^robots\.txt$ robots.php [L]
